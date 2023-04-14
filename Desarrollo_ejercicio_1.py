@@ -13,17 +13,27 @@ def highestValuePalindrome (s,n,k, r=0):
   for i in range(n//2):
     lCount = n - i - 1    
     if s[i] != s[lCount]: #Validar igualdad en posiciones de la lista 
-        if s[lCount] > s[i]:
-            s[i] = s[lCount]
+        if s[i] > s[lCount] :
+            s[lCount] = s[i]
         else:
             s[i] = s[lCount]
-        r += 1       
+        r += 1 
         if r > k :
-           return "-1"         
+          return "-1" 
+
+  print(s, " ", r)
+
+  for i in range(n//2):
+    lCount = n - i - 1       
+    if r < k :
+      if s[i] != '9':
+          s[i] = s[lCount] = '9'
+    r += 2
+
+  print(s, " ", r)
 
   return "".join(s)
-
-
+  
 s = input('Ingresa el número "s": ')
 n = int(input('¿Qué longitud tiene s?: '))
 k = int(input('¿Cuántos cambios deseas que realice?: '))
